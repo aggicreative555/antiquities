@@ -200,3 +200,67 @@ export function renderPostTemplate(postData, parent) {
   // Add time of creation
 
   const timeCreated = document.createElement("p");
+  timeCreated.className = '';
+  timeCreated.innerText = `Created: ${formatDate(data.created)}`;
+  contentContainer.appendChild(timeCreated);
+
+  // Add last edited
+
+  const timeEdited = document.createElement("p");
+  timeEdited.className = '';
+  timeEdited.innerText = `Last Edited: ${formatDate(data.updated)}`;
+  contentContainer.appendChild(timeEdited);
+
+
+  parent.appendChild(listing);
+}
+
+export function renderMultipleListings(posts, parent) {
+  parent.innerHTML = ""; // Clear previous posts
+
+  if (Array.isArray(posts) && posts.length > 0 ) {
+    posts.forEach((post) => {
+      const postElement = postTemplate(post);
+      if (postElement) {
+        parent.appendChild(postElement); // Append each post
+      }
+      console.log('im working');
+    });
+  } else {
+    console.error("No posts to render.");
+    parent.innerHTML = '<p>No listings available.</p>'
+  }
+}
+
+export async function renderSingleListing(postId, postsContainer) {
+  try {
+    const listing = await readListing(postId);
+    renderPostTemplate(listing, postsContainer); 
+  } catch (error) {
+    console.error("Error loading a single post:", error);
+    postsContainer.innerHTML = `<p>Failed to load post. Please reload the page or try again later.</p>`;
+  }
+}
+
+
+/**
+ * Initializes the posts page by rendering a single post or multiple posts based on the query parameters.
+ *
+ * @async
+ * @function initializePostsPage
+ * @throws {Error} If fetching a single post or multiple posts fails.
+ *
+ */
+
+export async function initializePostsPage(postsContainer) {
+  try {
+    const { data: posts } = await readMultipleListings(6, 1);
+    renderMultipleListings(posts, postsContainer);
+    
+  } catch (error) {
+    console.error("Error fetching multiple posts:", error);
+    postsContainer.innerHTML = `<p>Failed to load posts. Please try again later or refresh the page.</p>`;
+  }
+}
+
+
