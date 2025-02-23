@@ -1,5 +1,5 @@
-import { getHeaders } from "../headers";
-import { API_LISTINGS } from "../constants";
+import { getHeaders } from '../headers';
+import { API_LISTINGS } from '../constants';
 
 /**
  * Reads a single Listing by its ID.
@@ -17,11 +17,11 @@ import { API_LISTINGS } from "../constants";
 
 export async function readListing(id) {
   if (!id) {
-    throw new Error("Listing ID is required.");
+    throw new Error('Listing ID is required.');
   }
 
   const response = await getHeaders(`${API_LISTINGS}/${id}`, {
-    method: "GET",
+    method: 'GET',
   });
 
   if (!response.ok) {
@@ -51,15 +51,14 @@ export async function readListing(id) {
  * console.log(meta); // Outputs pagination metadata.
  */
 
-export async function readMultipleListings(limit = 6, page = 1, tag = "") {
+export async function readMultipleListings(limit = 6, page = 1, tag = '') {
   try {
     let apiUrl = `${API_LISTINGS}?limit=${limit}&page=${page}`;
     if (tag) apiUrl += `&tag=${encodeURIComponent(tag)}`;
 
     const response = await getHeaders(apiUrl, {
-      method: "GET",
+      method: 'GET',
     });
-  
 
     if (!response.ok) {
       throw new Error(`Failed to fetch Listings: ${response.statusText}`);
@@ -69,7 +68,7 @@ export async function readMultipleListings(limit = 6, page = 1, tag = "") {
 
     return multipleListings;
   } catch (error) {
-    console.error("Failed to retrieve Listings.");
+    console.error('Failed to retrieve Listings.');
     throw error;
   }
 }

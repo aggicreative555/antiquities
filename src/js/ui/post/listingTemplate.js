@@ -1,5 +1,5 @@
-import { readListing, readMultipleListings } from "../../api/listings/read";
-import { formatDate } from "../../utilities/formatDate";
+import { readListing, readMultipleListings } from '../../api/listings/read';
+import { formatDate } from '../../utilities/formatDate';
 
 const placeholderImages = [
   'https://images.unsplash.com/photo-1552648808-d31a8783a0af?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -11,72 +11,70 @@ const placeholderImages = [
 export function postTemplate(postData) {
   const data = postData.data || postData;
 
-  const listing = document.createElement("div");
-  listing.className = "";
+  const listing = document.createElement('div');
+  listing.className = '';
 
-  
-  const imageContainer = document.createElement("div");
-  imageContainer.className = "w-100 h-100 img-thumbnail";
+  const imageContainer = document.createElement('div');
+  imageContainer.className = 'w-100 h-100 img-thumbnail';
 
-  
   // Add media if available
 
-  const imageUrl =  Array.isArray(data.media) && data.media.length > 0
-  ? data.media[0].url 
-  : placeholderImages[Math.floor(Math.random() * placeholderImages.length)];
+  const imageUrl =
+    Array.isArray(data.media) && data.media.length > 0
+      ? data.media[0].url
+      : placeholderImages[Math.floor(Math.random() * placeholderImages.length)];
 
   imageContainer.style.backgroundImage = `url('${imageUrl}')`;
 
-
-  imageContainer.setAttribute("aria-label", data.media?.[0]?.alt || "Post image without description");
+  imageContainer.setAttribute(
+    'aria-label',
+    data.media?.[0]?.alt || 'Post image without description',
+  );
 
   listing.appendChild(imageContainer);
-
 
   // Add seller
   const seller = document.createElement('h3');
   seller.className = '';
-  seller.textContent = data.seller?.name || "anonymous";
+  seller.textContent = data.seller?.name || 'anonymous';
   listing.appendChild(seller);
 
-  
   // Add title
-  const title = document.createElement("h4");
-  title.className = "";
-  title.textContent = data.title || "Untitled";
+  const title = document.createElement('h4');
+  title.className = '';
+  title.textContent = data.title || 'Untitled';
   listing.appendChild(title);
 
   // Add description
-  const description = document.createElement("div");
-  description.className = "";
-  description.textContent = data.description || "No description";
+  const description = document.createElement('div');
+  description.className = '';
+  description.textContent = data.description || 'No description';
   listing.appendChild(description);
 
   // Add bids
 
-  const bidCount = document.createElement("p");
-  bidCount.className = "";
-  bidCount.textContent = data._count.bids || "0";
+  const bidCount = document.createElement('p');
+  bidCount.className = '';
+  bidCount.textContent = data._count.bids || '0';
   listing.appendChild(bidCount);
 
   // Add deadline
-  
-  const deadLine = document.createElement("p");
-  deadLine.className = "";
+
+  const deadLine = document.createElement('p');
+  deadLine.className = '';
   deadLine.textContent = `Ends at: ${formatDate(data.endsAt)}`;
   listing.appendChild(deadLine);
-  
-  
-  const viewListingButton = document.createElement("button");
-  viewListingButton.className = "";
-  viewListingButton.textContent = "See full listing";
+
+  const viewListingButton = document.createElement('button');
+  viewListingButton.className = '';
+  viewListingButton.textContent = 'See full listing';
   listing.appendChild(viewListingButton);
-  
-  viewListingButton.addEventListener("click", () => {
+
+  viewListingButton.addEventListener('click', () => {
     const postId = data.id;
 
     if (postId) {
-      window.location.href =`/listings/?id=${postId}`;
+      window.location.href = `/listings/?id=${postId}`;
     }
   });
 
@@ -108,117 +106,111 @@ export function postTemplate(postData) {
  */
 
 export function renderPostTemplate(postData, parent) {
-  parent.innerHTML = "";
+  parent.innerHTML = '';
 
   const data = postData.data || postData;
 
-  const listing = document.createElement("div");
-  listing.className = "post-container";
-
+  const listing = document.createElement('div');
+  listing.className = 'post-container';
 
   // Add go back function
 
-  const backContainer = document.createElement("a");
-  backContainer.className = "";
-  backContainer.textContent = "Back";
+  const backContainer = document.createElement('a');
+  backContainer.className = '';
+  backContainer.textContent = 'Back';
 
-  const backIcon = document.createElement("span");
-  backIcon.className = "";
-  backIcon.textContent = "";
+  const backIcon = document.createElement('span');
+  backIcon.className = '';
+  backIcon.textContent = '';
   backContainer.appendChild(backIcon);
-
 
   parent.appendChild(backContainer);
 
-  
-  const imageContainer = document.createElement("div");
-  imageContainer.className = "w-100 h-100 img-responsive";
+  const imageContainer = document.createElement('div');
+  imageContainer.className = 'w-100 h-100 img-responsive';
 
-  
   // Add media if available
 
-  const imageUrl =  Array.isArray(data.media) && data.media.length > 0
-  ? data.media[0].url 
-  : placeholderImages[Math.floor(Math.random() * placeholderImages.length)];
+  const imageUrl =
+    Array.isArray(data.media) && data.media.length > 0
+      ? data.media[0].url
+      : placeholderImages[Math.floor(Math.random() * placeholderImages.length)];
 
-  imageContainer.style.backgroundImage = `url('${imageUrl}')`
+  imageContainer.style.backgroundImage = `url('${imageUrl}')`;
 
-
-  imageContainer.setAttribute("aria-label", data.media?.[0]?.alt || "Post image without description");
+  imageContainer.setAttribute(
+    'aria-label',
+    data.media?.[0]?.alt || 'Post image without description',
+  );
 
   listing.appendChild(imageContainer);
-
 
   const contentContainer = document.createElement('div');
   contentContainer.className = '';
   listing.appendChild(contentContainer);
 
-
-
   // Add title
-  const title = document.createElement("h1");
-  title.className = "";
-  title.textContent = data.title || "No title Available";
+  const title = document.createElement('h1');
+  title.className = '';
+  title.textContent = data.title || 'No title Available';
 
   contentContainer.appendChild(title);
-
 
   // Add seller
   const seller = document.createElement('h2');
   seller.className = '';
-  seller.textContent = `${data.seller?.name || "Anonymous"}`;
+  seller.textContent = `${data.seller?.name || 'Anonymous'}`;
   contentContainer.appendChild(seller);
 
   // Add description
-  
-  const description = document.createElement("p");
-  description.className = "";
-  description.textContent = data.description || "";
+
+  const description = document.createElement('p');
+  description.className = '';
+  description.textContent = data.description || '';
   contentContainer.appendChild(description);
 
   // Add bids
-  
-  const bidCount = document.createElement("p");
-  bidCount.className = "";
-  bidCount.textContent = data._count.bids || "0";
+
+  const bidCount = document.createElement('p');
+  bidCount.className = '';
+  bidCount.textContent = data._count.bids || '0';
   contentContainer.appendChild(bidCount);
 
   // Add deadline
-  
-  const deadLine = document.createElement("p");
-  deadLine.className = "";
+
+  const deadLine = document.createElement('p');
+  deadLine.className = '';
   deadLine.textContent = `Ends at: ${formatDate(data.endsAt)}`;
   contentContainer.appendChild(deadLine);
 
-  // Add tags 
+  // Add tags
 
-  const tags = document.createElement("p");
+  const tags = document.createElement('p');
   tags.className = 'tags';
-  tags.innerText = `${data.tags.map(tag => `#${tag}`).join(", ")}`;
+  tags.innerText = `${data.tags.map((tag) => `#${tag}`).join(', ')}`;
   contentContainer.appendChild(tags);
 
   // Add time of creation
 
-  const timeCreated = document.createElement("p");
+  const timeCreated = document.createElement('p');
   timeCreated.className = '';
   timeCreated.innerText = `Created: ${formatDate(data.created)}`;
   contentContainer.appendChild(timeCreated);
 
   // Add last edited
 
-  const timeEdited = document.createElement("p");
+  const timeEdited = document.createElement('p');
   timeEdited.className = '';
   timeEdited.innerText = `Last Edited: ${formatDate(data.updated)}`;
   contentContainer.appendChild(timeEdited);
-
 
   parent.appendChild(listing);
 }
 
 export function renderMultipleListings(posts, parent) {
-  parent.innerHTML = ""; // Clear previous posts
+  parent.innerHTML = ''; // Clear previous posts
 
-  if (Array.isArray(posts) && posts.length > 0 ) {
+  if (Array.isArray(posts) && posts.length > 0) {
     posts.forEach((post) => {
       const postElement = postTemplate(post);
       if (postElement) {
@@ -227,21 +219,20 @@ export function renderMultipleListings(posts, parent) {
       console.log('im working');
     });
   } else {
-    console.error("No posts to render.");
-    parent.innerHTML = '<p>No listings available.</p>'
+    console.error('No posts to render.');
+    parent.innerHTML = '<p>No listings available.</p>';
   }
 }
 
 export async function renderSingleListing(postId, postsContainer) {
   try {
     const listing = await readListing(postId);
-    renderPostTemplate(listing, postsContainer); 
+    renderPostTemplate(listing, postsContainer);
   } catch (error) {
-    console.error("Error loading a single post:", error);
+    console.error('Error loading a single post:', error);
     postsContainer.innerHTML = `<p>Failed to load post. Please reload the page or try again later.</p>`;
   }
 }
-
 
 /**
  * Initializes the posts page by rendering a single post or multiple posts based on the query parameters.
@@ -256,11 +247,8 @@ export async function initializePostsPage(postsContainer) {
   try {
     const { data: posts } = await readMultipleListings(6, 1);
     renderMultipleListings(posts, postsContainer);
-    
   } catch (error) {
-    console.error("Error fetching multiple posts:", error);
+    console.error('Error fetching multiple posts:', error);
     postsContainer.innerHTML = `<p>Failed to load posts. Please try again later or refresh the page.</p>`;
   }
 }
-
-
