@@ -16,7 +16,8 @@
 
   <body>
     <h1>Login</h1>
-    <form name="login" id="loginForm">
+    <form name="login" id="loginForm" novalidate>
+      <div class="error-message" id="errorMessage"></div>
       <div>
         <label for="email">Email</label>
         <input id="email" type="email" name="email" required />
