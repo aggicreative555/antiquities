@@ -1,4 +1,5 @@
 import { login } from '../../api/auth/login';
+import { getValidation } from '../global/validateForm';
 
 /**
  * Handles the login form submission by passing data to the login function.
@@ -17,6 +18,48 @@ export function onLogin() {
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
 
+      // Form validation
+      const email = form.querySelector('#email');
+      const password = form.querySelector('#password');
+      const errorMessage = form.querySelector('#errorMessage');
+
+      console.log(errorMessage);
+
+      const allInputs = [email, password];
+
+      allInputs.forEach((input) => {
+        input.addEventListener('input', () => {
+          input.classList.remove('incorrect');
+          // Clear the error message if it exists
+          if (errorMessage && errorMessage.innerHTML) {
+            errorMessage.innerHTML = '';
+          }
+        });
+      });
+
+      errorMessage.innerHTML = '';
+      form
+        .querySelectorAll('.incorrect')
+        .forEach((el) => el.classList.remove('incorrect'));
+
+      const { errors, invalidFields } = getValidation(
+        '',
+        email.value.trim(),
+        password.value.trim(),
+        '',
+      );
+
+      if (errors.length > 0) {
+        errorMessage.innerHTML = errors
+          .map((error) => `<p>${error}</p>`)
+          .join('');
+
+        invalidFields.forEach((fieldId) => {
+          form.querySelector(`#${fieldId}`).classList.add('incorrect');
+        });
+        return;
+      }
+
       const submitButton = form.querySelector('button[type="submit"]');
 
       if (!submitButton) {
@@ -33,9 +76,9 @@ export function onLogin() {
       try {
         await login(profile);
         alert('Successful Login!');
-        // setTimeout(() => {
-        //   window.location.href = "/post/";
-        // }, 5);
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 5);
         return false;
       } catch (error) {
         console.error('Error logging in user', error);
