@@ -21,14 +21,14 @@ export function postTemplate(postData) {
 
   const imageUrl =
     Array.isArray(data.media) && data.media.length > 0
-      ? data.media[0].url
+      ? data.media.url
       : placeholderImages[Math.floor(Math.random() * placeholderImages.length)];
 
   imageContainer.style.backgroundImage = `url('${imageUrl}')`;
 
   imageContainer.setAttribute(
     'aria-label',
-    data.media?.[0]?.alt || 'Post image without description',
+    data.media?.alt || 'Post image without description',
   );
 
   listing.appendChild(imageContainer);
@@ -118,6 +118,7 @@ export function renderPostTemplate(postData, parent) {
   const backContainer = document.createElement('a');
   backContainer.className = '';
   backContainer.textContent = 'Back';
+  backContainer.href = '/listings/';
 
   const backIcon = document.createElement('span');
   backIcon.className = '';
@@ -133,14 +134,14 @@ export function renderPostTemplate(postData, parent) {
 
   const imageUrl =
     Array.isArray(data.media) && data.media.length > 0
-      ? data.media[0].url
+      ? data.media.url
       : placeholderImages[Math.floor(Math.random() * placeholderImages.length)];
 
   imageContainer.style.backgroundImage = `url('${imageUrl}')`;
 
   imageContainer.setAttribute(
     'aria-label',
-    data.media?.[0]?.alt || 'Post image without description',
+    data.media?.alt || 'Post image without description',
   );
 
   listing.appendChild(imageContainer);
@@ -173,7 +174,7 @@ export function renderPostTemplate(postData, parent) {
 
   const bidCount = document.createElement('p');
   bidCount.className = '';
-  bidCount.textContent = data._count.bids || '0';
+  bidCount.textContent = `Bids: ${data._count.bids}` || '0';
   contentContainer.appendChild(bidCount);
 
   // Add deadline
@@ -182,13 +183,6 @@ export function renderPostTemplate(postData, parent) {
   deadLine.className = '';
   deadLine.textContent = `Ends at: ${formatDate(data.endsAt)}`;
   contentContainer.appendChild(deadLine);
-
-  // Add tags
-
-  const tags = document.createElement('p');
-  tags.className = 'tags';
-  tags.innerText = `${data.tags.map((tag) => `#${tag}`).join(', ')}`;
-  contentContainer.appendChild(tags);
 
   // Add time of creation
 
@@ -204,6 +198,39 @@ export function renderPostTemplate(postData, parent) {
   timeEdited.innerText = `Last Edited: ${formatDate(data.updated)}`;
   contentContainer.appendChild(timeEdited);
 
+  // Add bid
+
+  const bidForm = document.createElement('form');
+  bidForm.id = 'bidForm';
+  listing.appendChild(bidForm);
+
+  const errorMessage = document.createElement('div');
+  errorMessage.id = 'errorMessage';
+  errorMessage.classList.add('error-message');
+  bidForm.appendChild(errorMessage);
+
+  const bidInput = document.createElement('input');
+  bidInput.type = 'text';
+  bidInput.id = 'bidInput';
+  bidInput.name = 'amount';
+  bidInput.required = 'true';
+  bidInput.placeholder = 'NOK 1000';
+  bidForm.appendChild(bidInput);
+
+  const bidButton = document.createElement('button');
+  bidButton.className = '';
+  bidButton.textContent = 'Add Bid';
+  bidButton.id = 'addBid';
+  bidForm.appendChild(bidButton);
+
+  // Add tags
+
+  const tags = document.createElement('p');
+  tags.className = 'tags';
+  tags.innerText =
+    `Tags: ${data.tags.map((tag) => `#${tag}`).join(', ')}` && '#antiques';
+  contentContainer.appendChild(tags);
+
   parent.appendChild(listing);
 }
 
@@ -214,9 +241,8 @@ export function renderMultipleListings(posts, parent) {
     posts.forEach((post) => {
       const postElement = postTemplate(post);
       if (postElement) {
-        parent.appendChild(postElement); // Append each post
+        parent.appendChild(postElement);
       }
-      console.log('im working');
     });
   } else {
     console.error('No posts to render.');
@@ -245,7 +271,7 @@ export async function renderSingleListing(postId, postsContainer) {
 
 export async function initializePostsPage(postsContainer) {
   try {
-    const { data: posts } = await readMultipleListings(6, 1);
+    const posts = await readMultipleListings(6, 1);
     renderMultipleListings(posts, postsContainer);
   } catch (error) {
     console.error('Error fetching multiple posts:', error);
