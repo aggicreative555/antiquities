@@ -3,17 +3,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/styles.scss';
 
 import router from './js/router';
-import { setLogoutListener } from './js/ui/global/logout';
+import { navTemplate } from './js/ui/global/nav';
 
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const logoutButton = document.getElementById('logoutButton');
+    const header = document.getElementById('header');
 
-    if (logoutButton) {
-        setLogoutListener();
+    if (header) {
+        navTemplate();
     } else {
-        console.error("Error setting up logout listener:");
+        console.error("Header element not found or error setting up nav");
     }
 });
 

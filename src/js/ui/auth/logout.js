@@ -6,8 +6,7 @@ import { remove } from '../../utilities/authGuard';
  * @function onLogout
  * @throws {Error} If accessToken or user is missing or cannot be removed.
  *
- */
-
+*/
 export function onLogout() {
   try {
     remove('accessToken');
@@ -16,32 +15,9 @@ export function onLogout() {
     sessionStorage.removeItem('user');
 
     alert('You are now logged out.');
-    window.location.href = '/login/';
+    window.location.reload();
   } catch (error) {
     console.error('Logout unsuccessful. Refresh the page and try again.');
-    throw error;
-  }
-}
-
-/**
- * Attaches a click event listener to the logout button to handle user logout.
- *
- * @function setLogoutListener
- * @throws {Error} If the logout button is not found in the DOM.
- *
- */
-
-export function setLogoutListener() {
-  try {
-    const logoutButton = document.querySelector('#logoutButton');
-
-    if (logoutButton) {
-      logoutButton.addEventListener('click', onLogout);
-    } else {
-      throw new Error('Logout button not found');
-    }
-  } catch (error) {
-    console.error('Logout listener not working.');
     throw error;
   }
 }
