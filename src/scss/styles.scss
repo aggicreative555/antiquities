@@ -1,5 +1,11 @@
-@import '../../node_modules/bootstrap/scss/bootstrap';
+@import '../../node_modules/bootstrap/scss/functions';
+
 @import './variables';
+
+@import '../../node_modules/bootstrap/scss/variables';
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+@import '../../node_modules/bootstrap/scss/buttons';
 
 @import url('https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400..700;1,400..700&family=Manrope:wght@200..800&display=swap');
 
@@ -68,6 +74,16 @@ main {
   justify-items: center;
 }
 
+.bg-light {
+  background-color: $brown-100 !important;
+}
+
+.bg-dark {
+  background-color: $burgundy-dark-theme;
+}
+
+// Profile Frame
+
 .profile-picture-container {
   overflow: hidden;
   border-radius: 50%;
@@ -75,13 +91,19 @@ main {
   height:6rem;
 }
 
+.profile-content {
+  text-decoration: none;
+  color: $black-100;
+
+}
+
 .frame {
   border: 1px solid $black-100;   
   outline: 4px solid $black;    
   outline-offset: 4px;       
   padding: 1rem;  
-  width: 90%;
-  max-width: 400px;          
+  width: 100%;
+  max-width: 356px;          
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -100,3 +122,75 @@ main {
   }
 }
 
+// Custom Buttons
+.btn-custom-primary {
+  background-color: $burgundy-light-theme !important;
+  color: $brown-100 !important;
+  border: 1px solid $black-100 !important;
+  border-radius: 0%;
+  outline: 1px solid $black-100 !important;    
+  outline-offset: 2px;   
+  font-weight: 500;
+  min-width: 256px;
+  text-transform: capitalize;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: $black-100 !important;
+    color: $brown-100 !important;
+    border-color: $brown-100 !important;
+    font-weight: 600;
+  }
+
+  &:focus {
+    border: 3px solid $black-100 !important;
+    font-weight: 600;
+  }
+
+  &:disabled {
+    background-color: lighten($burgundy-light-theme, 80%);
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn-custom-secondary {
+  background-color: $brown-100 !important;
+  color: $black-100 !important;
+  border: 1px solid $black-100 !important;
+  border-radius: 0%;
+  outline: 1px solid $black-100 !important;    
+  outline-offset: 2px;   
+  font-weight: 500;
+  min-width: 256px;
+  text-transform: capitalize;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: $brown-400 !important;
+    color: $black-100 !important;
+    border-color: $black-100 !important;
+    font-weight: 600;
+  }
+
+  &:focus {
+    border: 3px solid $burgundy-light-theme !important;
+    font-weight: 600;
+  }
+
+  &:disabled {
+    background-color: darken($brown-100, 10%);
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.navbar-toggler {
+  border: 0;
+  color: $black-100 !important;
+  background-color: $brown-100;
+  margin-top: 5%;
+  margin-inline: 1rem;
+}
