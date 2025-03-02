@@ -3,6 +3,9 @@ import {
   initializePostsPage,
 } from '../../ui/post/listingTemplate';
 
+import { onAddBid } from '../../ui/post/bid';
+import { validateBidInput } from '../../ui/global/validateBidInput';
+
 export async function initializePostFunctions() {
   try {
     const urlParams = new URLSearchParams(window.location.search);
@@ -10,14 +13,11 @@ export async function initializePostFunctions() {
     const postsContainer = document.querySelector('#postsContainer');
 
     if (!postId) {
-      console.log(window.location.pathname);
-
       await initializePostsPage(postsContainer);
-    } else if (postId) {
+    } else {
       const multiplePostsContent = document.getElementById(
         'mutiplePostsContent',
       );
-
       const postsContainer = document.getElementById('postsContainer');
 
       multiplePostsContent.classList.remove('block');
@@ -26,9 +26,25 @@ export async function initializePostFunctions() {
       postsContainer.classList.replace('posts-container', 'single-post');
 
       await renderSingleListing(postId, postsContainer);
+
+      // Add bid
+      const bidInput = document.getElementById('bidInput');
+      const bidForm = document.querySelector('#bidForm');
+
+      if (bidInput) {
+        if (!bidInput.value.includes('NOK')) {
+          bidInput.value = 'NOK ';
+        }
+
+        bidInput.addEventListener('input', validateBidInput);
+      }
+
+      if (bidForm) {
+        bidForm.addEventListener('submit', onAddBid);
+      }
     }
   } catch (error) {
-    console.error('Error initalizing post page.', error);
+    console.error('Error initializing post page.', error);
   }
 }
 
