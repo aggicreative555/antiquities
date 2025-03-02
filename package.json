@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "npm-run-all --parallel watch start",
-    "start": "vite",
+    "start": "vite build",
     "build": "sass src/scss:dist/css",
     "watch": "sass src/scss:dist/css --watch",
     "preview": "vite preview",

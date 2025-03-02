@@ -3,8 +3,9 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   appType: "mpa",
-  base: "",
+  base: "/",
   build: {
+    outDir: 'dist/',
     target: "esnext",
     rollupOptions: {
       input: {
