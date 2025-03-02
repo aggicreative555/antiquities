@@ -3,7 +3,6 @@ import { renderProfile } from '../../ui/profile/profileTemplate';
 
 async function initializeProfilePage() {
   const profileContainer = document.querySelector('#profileContainer');
-  const editProfileContainer = document.querySelector('#editProfileContainer');
 
   try {
     authGuard();
@@ -21,11 +20,11 @@ async function initializeProfilePage() {
     console.error('Error setting up authGuard', error);
   }
 
-  //   try {
-  //     setLogoutListener();
-  //   } catch (error) {
-  //     console.error("Error setting up logout", error);
-  //   }
+  try {
+    setLogoutListener();
+  } catch (error) {
+    console.error('Error setting up logout', error);
+  }
 }
 
 initializeProfilePage();

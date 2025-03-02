@@ -11,7 +11,7 @@ export function navTemplate() {
     if (existingNav) existingNav.remove();
 
     const nav = document.createElement('nav');
-    nav.className = "navbar navbar-light bg-light fixed-top";
+    nav.className = "navbar navbar-light bg-light fixed-top box-shadow-S";
 
     nav.innerHTML = `
     <div class="container position-relative">

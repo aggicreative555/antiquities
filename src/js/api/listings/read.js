@@ -64,9 +64,17 @@ export async function readMultipleListings(limit = 6, page = 1, tag = '') {
       throw new Error(`Failed to fetch Listings: ${response.statusText}`);
     }
 
-    const multipleListings = await response.json();
+    let multipleListings = await response.json();
 
-    return multipleListings;
+    const listingsArray = Array.isArray(multipleListings.data)
+      ? multipleListings.data
+      : [];
+
+    const sortedListings = listingsArray.sort(
+      (a, b) => new Date(b.created) - new Date(a.created),
+    );
+
+    return sortedListings;
   } catch (error) {
     console.error('Failed to retrieve Listings.');
     throw error;
