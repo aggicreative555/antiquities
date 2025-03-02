@@ -4,13 +4,21 @@
     <meta charset="UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Noroff FED2 JS2 CA</title>
+    <title>Antiquities | Log In User </title>
+    <meta name="description" content="Log in a user to bid and sell your antiques.">
     <script type="module" src="/src/app.js"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="//favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
   </head>
 
   <body>
+    <header id="header"></header>
     <h1>Login</h1>
-    <form name="login">
+    <form name="login" id="loginForm" novalidate>
+      <div class="error-message" id="errorMessage"></div>
       <div>
         <label for="email">Email</label>
         <input id="email" type="email" name="email" required />
@@ -22,7 +30,8 @@
       </div>
 
       <a href="/auth/register/">Register</a>
-      <button>Login</button>
+      <button type="submit">Login</button>
     </form>
+    <footer id="footer" class="bg-dark-theme"></footer>
   </body>
 </html>

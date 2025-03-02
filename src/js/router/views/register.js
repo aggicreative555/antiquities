@@ -1,5 +1,11 @@
-import { onRegister } from "../../ui/auth/register";
+import { onRegister } from '../../ui/auth/register';
 
-const form = document.forms.register;
+export function initializeRegister() {
+  try {
+    onRegister();
+  } catch {
+    console.error('Error initializing register function.');
+  }
+}
 
-form.addEventListener("submit", onRegister);
+initializeRegister();

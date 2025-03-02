@@ -5,18 +5,37 @@
   <meta charset="UTF-8" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Noroff FED2 JS2 CA</title>
+  <title>Antiquities | Home Page</title>
+  <meta name="description" content="Bid and sell antiques at Antiquities.">
   <script type="module" src="/src/app.js"></script>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
 </head>
 
 <body>
-  <img src="/images/noroff-logo.png" alt="Noroff Logo" />
+  <header id="header">
+  </header>
+  <main>
+    <img class="img-responsive w-100 fullscreen-70" src="https://plus.unsplash.com/premium_photo-1702226631942-921d35d4183a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHZpbnRhZ2V8ZW58MHx8MHx8fDA%3D" alt="Legs with red stocking and heels">
+    <div class="container my-5 text-center">
+      <h1 class="heading-L mb-3">Valentines</h1>
+      <p>Themed Auction. Closes on the 15th of February.</p>
+      <button class="btn btn-custom-primary my-4">Learn More</button>
+    </div>
+    <div class="container d-flex flex-column align-items-center justify-items-center">
+      <div class="frame bg-brown-300 w-auto h-fit my-5"> 
+        <h2 class="display text-center">Featured Products</h2>
+      </div>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5 justify-content-center" id="postsContainer">
+      </div>
+    </div>
 
-  <h1>Home</h1>
+  </main>
+  <footer id="footer" class="bg-dark-theme">
+  </footer>
 
-  <a href="/profile/">My Profile</a>
-  <a href="/auth/login/">Login</a>
-  <a href="/auth/register/">Register</a>
-  <button>Logout</button>
 </body>
 </html>

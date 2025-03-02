@@ -6,19 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Noroff FED2 JS2 CA</title>
     <script type="module" src="/src/app.js"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="//favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
   </head>
 
   <body>
+    <header id="header"></header>
     <h1>Register</h1>
-
-    <form name="register">
+    
+    <form name="register" id="registerForm" novalidate>
+      <div class="error-message" id="errorMessage"></div>
       <div>
         <label for="name">Name</label>
         <input
           id="name"
           type="text"
           name="name"
-          required
+          
           maxlength="20"
           pattern="^[\w]+$"
           title="Please enter a username using only letters and numbers"
@@ -31,7 +38,7 @@
           id="email"
           type="email"
           name="email"
-          required
+          
           pattern="^[\w\-.]+@(stud\.)?noroff\.no$"
           title="Please enter a valid noroff.no or stud.noroff.no address"
         />
@@ -43,13 +50,25 @@
           type="password"
           name="password"
           id="password"
-          required
+          
           minlength="8"
         />
       </div>
 
+      <div>
+        <label for="confirm-password">Confirm Password</label>
+        <input
+          type="password"
+          name="confirm-password"
+          id="confirmPassword"
+          
+          minlength="8"
+        />
+      </div>
+      <button type="submit">Register</button>
+      <p>Do you already have an account? </p>
       <a href="/auth/login/">Login</a>
-      <button>Register</button>
     </form>
+    <footer id="footer" class="bg-dark-theme"></footer>
   </body>
 </html>

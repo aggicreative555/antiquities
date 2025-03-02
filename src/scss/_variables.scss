@@ -1,0 +1,38 @@
+@import '../../node_modules/bootstrap/scss/functions';
+
+
+
+// Variables
+
+// Brand Colors
+$brown-100: #E5D1C7;  
+$black-100: #1D1A19;
+$burgundy-light-theme: #4E1710; 
+$burgundy-dark-theme: #591610; 
+$brown-200: #CFAC9A;
+$brown-300: #BB8E78;
+$brown-400: #A5755D;
+$brown-500: #89604C;
+$brown-600: #735241;
+$brown-700: #61483B;
+$brown-800: #33241C;
+$brown-900: #251A15;
+
+// Fonts
+$font-family-base: 'Manrope', sans-serif;
+$headings-font-family: 'Ibarra Real Nova', serif;
+
+// Perfect fifth typescale
+
+$fs-XL: clamp(2.5rem, 8vw + 1rem, 8rem);  // 5.0625
+$fs-L: clamp(2rem, 7vw + 0.75rem, 5rem);   // 3.375
+$fs-M: clamp(1.5rem, 6vw + 0.5rem, 3.375rem); // 2.25
+$fs-S: clamp(1.25rem, 5vw + 0.25rem, 2.25rem); // 1.5
+$fs-XS: clamp(1rem, 4vw + 0.1rem, 1.25rem);  // 1
+$fs-XXS: clamp(0.667rem, 4vw + 0.1rem, 1rem);  // 1
+
+
+
+@import '../../node_modules/bootstrap/scss/variables';
+
+

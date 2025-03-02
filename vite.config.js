@@ -3,19 +3,18 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   appType: "mpa",
-  base: "",
+  base: "/",
   build: {
+    outDir: 'dist/',
     target: "esnext",
     rollupOptions: {
       input: {
         main: resolve(__dirname, "./index.html"),
         login: resolve(__dirname, "./auth/login/index.html"),
-        auth: resolve(__dirname, "./auth/index.html"),
         register: resolve(__dirname, "./auth/register/index.html"),
         profile: resolve(__dirname, "./profile/index.html"),
-        post: resolve(__dirname, "./post/index.html"),
-        editPost: resolve(__dirname, "./post/edit/index.html"),
-        createPost: resolve(__dirname, "./post/create/index.html"),
+        listings: resolve(__dirname, "./listings/index.html"),
+        createPost: resolve(__dirname, "./listings/create/index.html"),
       },
     },
   },

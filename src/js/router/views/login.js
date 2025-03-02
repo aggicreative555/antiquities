@@ -1,5 +1,15 @@
-import { onLogin } from "../../ui/auth/login";
+import { onLogin } from '../../ui/auth/login';
 
-const form = document.forms.login;
+document.addEventListener('DOMContentLoaded', () => {
+  onLogin();
+});
 
-form.addEventListener("submit", onLogin);
+export function initializeLogin() {
+  try {
+    onLogin();
+  } catch {
+    console.error('Error loading login functionality.');
+  }
+}
+
+initializeLogin();
