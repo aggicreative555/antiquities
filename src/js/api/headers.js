@@ -16,7 +16,7 @@ import { API_KEY } from './constants';
 
 export async function headers() {
   const accessToken = load('accessToken');
-  const apiKey = load(API_KEY);
+  const apiKey = API_KEY;
 
   try {
     if (!accessToken) {

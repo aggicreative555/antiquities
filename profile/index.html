@@ -15,11 +15,14 @@
   </head>
   <body>
     <header id="header"></header>
-    <h1>Profile</h1>
-    <div class="" id="profileContainer"></div>
-    <div class="d-none" id="editProfileContainer"></div>
-    <a class="" href="/listings/create/index.html">Create Listing</a>
-    <button class="" id="logoutButton">Log out</button>
-    <footer id="footer"></footer>
+    <main class="container d-flex justify-content-center align-items-center flex-column">
+      <div class="my-5 w-100" id="profileContainer"></div>
+      <div class="d-none w-100" id="editProfileContainer"></div>
+      <div class="my-5 d-flex flex-column gap-3" id="buttonGroup">
+        <a class="btn btn-custom-primary" href="/listings/create/index.html">Create Listing</a>
+        <button class="btn btn-custom-secondary" id="logoutButton">Log out</button>
+      </div>
+    </main>
+    <footer id="footer" class="bg-dark-theme"></footer>
   </body>
 </html>

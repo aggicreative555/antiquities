@@ -23,8 +23,6 @@ export function onLogin() {
       const password = form.querySelector('#password');
       const errorMessage = form.querySelector('#errorMessage');
 
-      console.log(errorMessage);
-
       const allInputs = [email, password];
 
       allInputs.forEach((input) => {

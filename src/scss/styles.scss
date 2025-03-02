@@ -6,6 +6,8 @@
 @import '../../node_modules/bootstrap/scss/bootstrap';
 
 @import '../../node_modules/bootstrap/scss/buttons';
+@import '/node_modules/bootstrap-icons/font/bootstrap-icons.css';
+
 
 @import url('https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400..700;1,400..700&family=Manrope:wght@200..800&display=swap');
 
@@ -22,6 +24,26 @@
   font-family: $headings-font-family;
 }
 
+.color-burgundy {
+  color: $burgundy-light-theme;
+}
+
+.color-brown-500 {
+  color: $brown-500;
+}
+
+.border-black {
+  border: .5rem solid $black-100;
+}
+
+.border-burgundy {
+  border: .2rem solid $burgundy-light-theme;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
 .box-shadow-S {
   box-shadow: 0px 4px 16px 0px rgba(29, 26, 25, 0.2);
 }
@@ -30,7 +52,12 @@
   font-family: $headings-font-family;
   font-weight: 700;
   font-size: $fs-S;
-  font-style: italic;
+}
+
+.heading-M {
+  font-family: $headings-font-family;
+  font-weight: 700;
+  font-size: $fs-M;
 }
 
 .heading-L {
@@ -43,7 +70,7 @@
 .caption {
   font-weight: 500;
   font-size: $fs-XXS;
-  color: $brown-700;
+  color: $brown-600;
 }
 
 .line {
@@ -65,6 +92,12 @@
   font-size: $fs-XL;
 }
 
+.display-M {
+  font-family: 'Academy Engraved LET', serif;
+  color: $burgundy-light-theme;
+  font-size: $fs-M;
+}
+
 .fullscreen-70 {
   height: 70vh;
   object-fit: cover;
@@ -78,7 +111,7 @@ body {
 }
 
 main {
-  margin-top: 15%;
+  margin-top: 150px !important;
 }
 
 .incorrect {
@@ -97,6 +130,10 @@ main {
   justify-items: center;
 }
 
+.navbar-toggler {
+  color: $black-100 !important;
+}
+
 .bg-light {
   background-color: $brown-100 !important;
   color: $black-100;
@@ -112,6 +149,7 @@ main {
 
   .nav-link {
     color: $brown-100 !important;
+    font-size: $fs-XS !important;
   }
 }
 
@@ -150,6 +188,17 @@ main {
   align-items: center;
 }
 
+.frame-2 {
+  outline: 1px solid $black-100;
+  outline-offset: 4px;
+  padding: 1rem;
+  min-height: 10rem;
+  border-left: 1px solid $black-100;
+  border-radius: 0%;
+  background-color: $brown-100 !important;
+  transition: all 0.2s ease-in-out;
+}
+
 .img-responsive {
   border-radius: 0%;
   filter: brightness(70%);
@@ -159,6 +208,67 @@ main {
     filter: brightness(100%);
   }
 }
+
+// Form
+
+form {
+
+  max-width: 20rem;
+
+  transition: all 0.2s ease-in-out;
+
+  .form-field {
+    .form-control {
+      &:hover, &:focus {
+        border: 1px solid $black-100;
+        outline: 3px solid $black-100;
+      }
+    
+    }
+
+
+    &:hover, &:focus {
+      .form-label {
+        padding-left: .5rem;
+        color: $brown-800;
+      }
+    }
+  }
+
+  .form-control {
+    outline: 1px solid $black-100;
+    border: none;
+    outline-offset: 4px;
+    border-left: 1px solid $black-100;
+    border-radius: 0%;
+    color: $brown-800;
+    font-weight: 400;
+    font-size: $fs-XS;
+    background-color: $brown-100 !important;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .form-label {
+    font-size: $fs-XXS;
+    font-weight: 600;
+    color: $black-100;
+    transition: all 0.2s ease-in-out;
+  }
+
+  input:-webkit-autofill {
+    background-color: $brown-100 !important; 
+    color: $brown-800 !important;
+    font-size: $fs-XS;
+    border-radius: 0%;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  input:-webkit-autofill:focus {
+    background-color: $brown-100 !important;
+  }
+
+}
+
 
 .card {
   background-color: $brown-100;
@@ -235,7 +345,26 @@ main {
   }
 }
 
+.z-index {
+  z-index: 999;
+
+}
+
 // Custom Buttons
+
+.btn-custom-rounded {
+  color: $burgundy-light-theme;
+  border: 2px solid $burgundy-light-theme;
+  background-color: $brown-100;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: $brown-100;
+    border: 2px solid $black-100;
+    background-color: $black-100;
+  }
+}
+
 .btn-custom-primary {
   background-color: $burgundy-light-theme !important;
   color: $brown-100 !important;
@@ -247,7 +376,7 @@ main {
   min-width: 256px;
   text-transform: capitalize;
   padding: 0.75rem 1.5rem;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
     background-color: $black-100 !important;

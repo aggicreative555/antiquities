@@ -116,14 +116,33 @@ export function postTemplate(postData) {
 export function renderPostTemplate(postData) {
   const data = postData.data || postData;
   const listing = document.createElement('div');
-  listing.className = 'card w-100';
+  listing.className = 'card w-100 d-flex flex-column gap-5 w-100';
+
+  
+  // Add go back function
+ 
+  const backContainer = document.createElement('a');
+  backContainer.className = 'd-flex align-items-center text-decoration-none back-button px-3 py-2';
+  backContainer.href = '/listings/';
+
+  const backIcon = document.createElement('img');
+  backIcon.className = 'arrow-icon';
+  backIcon.src = '/icons/arrow-icon-antiquities.svg';
+  backIcon.alt = 'Dropdown arrow';
+  backIcon.style.transform = 'rotate(180deg)';
+  backIcon.style.height = '48px';
+
+  backContainer.appendChild(backIcon);
+
+  listing.appendChild(backContainer);
+
 
   const imageContainer = document.createElement('div');
   imageContainer.className = 'card-img-top full-screen-img';
 
   const imageUrl =
     Array.isArray(data.media) && data.media.length > 0
-      ? data.media.url
+      ? data.media[0].url
       : placeholderImages[Math.floor(Math.random() * placeholderImages.length)];
 
   imageContainer.style.backgroundImage = `url('${imageUrl}')`;
@@ -131,8 +150,14 @@ export function renderPostTemplate(postData) {
     'aria-label',
     data.media?.alt || 'Post image without description',
   );
+  imageContainer.style.minHeight = '500px';
+  imageContainer.style.width = '100%';
+  imageContainer.style.backgroundSize = 'cover';
+  imageContainer.style.backgroundPosition = 'center';
 
   listing.appendChild(imageContainer);
+
+
 
   // Content container
   const contentContainer = document.createElement('div');
@@ -153,7 +178,7 @@ export function renderPostTemplate(postData) {
 
   // Description
   const description = document.createElement('div');
-  description.className = 'card-text fs-4';
+  description.className = 'card-text my-5';
   description.textContent =
     data.description ||
     'An antique item description, providing details of the materials, care and era.';
@@ -162,7 +187,7 @@ export function renderPostTemplate(postData) {
   // Bids and deadline container
   const containerBidDeadline = document.createElement('div');
   containerBidDeadline.className =
-    'card-body d-flex flex-row justify-content-between';
+    'd-flex flex-column mt-5';
   listing.appendChild(containerBidDeadline);
 
   // Bids
@@ -173,13 +198,13 @@ export function renderPostTemplate(postData) {
 
   // Deadline
   const deadLine = document.createElement('p');
-  deadLine.className = 'card-text caption text-danger';
+  deadLine.className = 'card-text caption';
   deadLine.textContent = `Ends at: ${formatDate(data.endsAt)}`;
   containerBidDeadline.appendChild(deadLine);
 
   // Bid Now Button
   const bidNowButton = document.createElement('button');
-  bidNowButton.className = 'btn btn-custom-primary btn-lg';
+  bidNowButton.className = 'btn btn-custom-primary my-2';
   bidNowButton.textContent = 'Place a Bid';
   containerBidDeadline.appendChild(bidNowButton);
 
@@ -205,12 +230,16 @@ export function renderMultipleListings(posts, parent) {
 export async function renderSingleListing(postId, postsContainer) {
   try {
     const listing = await readListing(postId);
-    renderPostTemplate(listing, postsContainer);
+    const postElement = renderPostTemplate(listing);
+    
+    postsContainer.innerHTML = '';
+    postsContainer.appendChild(postElement); 
   } catch (error) {
     console.error('Error loading a single post:', error);
     postsContainer.innerHTML = `<p>Failed to load post. Please reload the page or try again later.</p>`;
   }
 }
+
 
 export async function initializePostsPage(postsContainer) {
   try {

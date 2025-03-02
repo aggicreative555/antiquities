@@ -24,7 +24,6 @@ export function onRegister() {
       const repeatPassword = form.querySelector('#confirmPassword');
       const errorMessage = form.querySelector('#errorMessage');
 
-      console.log(errorMessage);
 
       const allInputs = [name, email, password, repeatPassword];
 

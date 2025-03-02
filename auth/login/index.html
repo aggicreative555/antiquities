@@ -16,22 +16,35 @@
 
   <body>
     <header id="header"></header>
-    <h1>Login</h1>
-    <form name="login" id="loginForm" novalidate>
-      <div class="error-message" id="errorMessage"></div>
-      <div>
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email" required />
+    <main class="container d-flex justify-content-center align-items-center flex-column">
+      <div class="frame bg-brown-300 px-5 mb-5">
+        <h1 class="display-M text-center">Log In</h1>
       </div>
+      <form name="login" id="loginForm" class="mt-5 d-flex flex-column gap-5 mx-5"  autocomplete="new-email" novalidate>
+        
+        <div class="error-message alert alert-danger d-none" role="alert" aria-live="polite" id="errorMessage" ></div>
 
-      <div>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required />
-      </div>
-
-      <a href="/auth/register/">Register</a>
-      <button type="submit">Login</button>
-    </form>
+        <div class="form-field">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-control" id="email" type="email" name="email" required aria-describedby="emailHelp"  autocomplete="new-email" />
+          <div id="emailHelp" class="form-text mt-3 caption">
+            Your email must be a valid @stud.noroff.no email.
+          </div>
+        </div>
+        <div class="form-field mb-3">
+          <label class="form-label" for="password">Password</label>
+          <input class="form-control" type="password" name="password" id="password" required  autocomplete="new-password" aria-describedby="passwordHelp"/>
+          <div id="passwordHelp" class="form-text caption mt-3">
+            Your password must be at least 8 characters long and must not contain spaces or special characters.
+          </div>
+        </div>
+        <button class="my-3 w-100 btn btn-custom-primary" type="submit">Login</button>
+        <div class="my-5 text-center pb-5">
+          <p class="capitalize heading color-burgundy mb-3">Would you like to become a member</p>
+          <a href="/auth/register/" class="btn btn-custom-secondary my-2 w-100">Register</a>
+        </div>
+      </form>
+    </main>
     <footer id="footer" class="bg-dark-theme"></footer>
   </body>
 </html>
