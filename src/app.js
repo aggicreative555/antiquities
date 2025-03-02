@@ -6,6 +6,8 @@ import router from './js/router';
 import { navTemplate } from './js/ui/global/nav';
 import { footerTemplate } from './js/ui/global/footer';
 
+console.log('working');
+
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.getElementById('header');
   const footer = document.getElementById('footer');
