@@ -1,4 +1,5 @@
 import { load } from '../utilities/authGuard';
+import { API_KEY } from './constants';
 
 /**
  * Generates HTTP headers for API requests, including Content-Type, Authorization, and API key.
@@ -15,7 +16,7 @@ import { load } from '../utilities/authGuard';
 
 export async function headers() {
   const accessToken = load('accessToken');
-  const apiKey = import.meta.env.VITE_API_KEY;
+  const apiKey = load(API_KEY);
 
   try {
     if (!accessToken) {
