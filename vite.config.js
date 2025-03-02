@@ -16,6 +16,10 @@ export default defineConfig({
         listings: resolve(__dirname, "./listings/index.html"),
         createPost: resolve(__dirname, "./listings/create/index.html"),
       },
+      output: {
+        dir: 'dist',
+        format: 'es',
+      },
     },
   },
 });
