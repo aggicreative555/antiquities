@@ -20,25 +20,25 @@ export function footerTemplate() {
             <li class="nav-item">
               <a href="/events.html" class="nav-link d-flex align-items-center">
                 Events
-                <img src="/icons/arrow-icon-antiquities.svg" class="ms-2" alt="Arrow icon">
+                <img src="/icons/arrow-icon-light.svg" class="ms-2" alt="Arrow icon">
               </a>
             </li>
             <li class="nav-item">
               <a href="/contact.html" class="nav-link d-flex align-items-center">
                 Contact
-                <img src="/icons/arrow-icon-antiquities.svg" class="ms-2" alt="Arrow icon">
+                <img src="/icons/arrow-icon-light.svg" class="ms-2" alt="Arrow icon">
               </a>
             </li>
             <li class="nav-item">
               <a href="/locations.html" class="nav-link d-flex align-items-center">
                 Locations
-                <img src="/icons/arrow-icon-antiquities.svg" class="ms-2" alt="Arrow icon">
+                <img src="/icons/arrow-icon-light.svg" class="ms-2" alt="Arrow icon">
               </a>
             </li>
             <li class="nav-item">
               <a href="/regulations.html" class="nav-link d-flex align-items-center">
                 Regulations
-                <img src="/icons/arrow-icon-antiquities.svg" class="ms-2" alt="Arrow icon">
+                <img src="/icons/arrow-icon-light.svg" class="ms-2" alt="Arrow icon">
               </a>
             </li>
           </ul>
