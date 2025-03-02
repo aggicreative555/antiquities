@@ -11,8 +11,8 @@ const placeholderImages = [
 export function postTemplate(postData) {
   const data = postData.data || postData;
 
-  const col = document.createElement("div");
-  col.className = "col w-fit mx-5 justify-items-center";
+  const col = document.createElement('div');
+  col.className = 'col w-fit mx-5 justify-items-center';
   col.style.justifyItems = 'center';
 
   const listing = document.createElement('div');
@@ -29,9 +29,9 @@ export function postTemplate(postData) {
       : placeholderImages[Math.floor(Math.random() * placeholderImages.length)];
 
   imageContainer.style.backgroundImage = `url('${imageUrl}')`;
-  imageContainer.style.minHeight = "338px";
-  imageContainer.style.backgroundSize = "cover";
-  imageContainer.style.backgroundPosition = "center";
+  imageContainer.style.minHeight = '338px';
+  imageContainer.style.backgroundSize = 'cover';
+  imageContainer.style.backgroundPosition = 'center';
 
   imageContainer.setAttribute(
     'aria-label',
@@ -40,9 +40,8 @@ export function postTemplate(postData) {
 
   listing.appendChild(imageContainer);
 
-  
   // Add Content
-  const contentContainer = document.createElement('div')
+  const contentContainer = document.createElement('div');
   contentContainer.className = 'card-body';
   listing.appendChild(contentContainer);
 
@@ -57,22 +56,21 @@ export function postTemplate(postData) {
   title.className = 'card-title heading text-center';
   title.textContent = data.title || 'An Antique Item';
   contentContainer.appendChild(title);
-  
 
   // Add description
   const description = document.createElement('p');
   description.className = 'card-text mt-5  text-center';
-  description.textContent = data.description || 'An antique item description, providing details of the materials, care and era.';
+  description.textContent =
+    data.description ||
+    'An antique item description, providing details of the materials, care and era.';
   contentContainer.appendChild(description);
 
-
-  // Container for bids and deadline 
+  // Container for bids and deadline
   const containerBidDeadline = document.createElement('div');
-  containerBidDeadline.className = 'card-footer'
+  containerBidDeadline.className = 'card-footer';
   listing.appendChild(containerBidDeadline);
 
   // Add bids
-
 
   const bidCount = document.createElement('p');
   bidCount.className = 'card-text caption';
@@ -101,13 +99,10 @@ export function postTemplate(postData) {
     if (postId) {
       window.location.href = `/listings/?id=${postId}`;
     }
-
-    
   });
-  
+
   col.appendChild(listing);
   return col;
-
 }
 
 /**
@@ -120,11 +115,11 @@ export function postTemplate(postData) {
 
 export function renderPostTemplate(postData) {
   const data = postData.data || postData;
-  const listing = document.createElement("div");
-  listing.className = "card w-100";
+  const listing = document.createElement('div');
+  listing.className = 'card w-100';
 
-  const imageContainer = document.createElement("div");
-  imageContainer.className = "card-img-top full-screen-img"; 
+  const imageContainer = document.createElement('div');
+  imageContainer.className = 'card-img-top full-screen-img';
 
   const imageUrl =
     Array.isArray(data.media) && data.media.length > 0
@@ -133,56 +128,59 @@ export function renderPostTemplate(postData) {
 
   imageContainer.style.backgroundImage = `url('${imageUrl}')`;
   imageContainer.setAttribute(
-    "aria-label",
-    data.media?.alt || "Post image without description"
+    'aria-label',
+    data.media?.alt || 'Post image without description',
   );
 
   listing.appendChild(imageContainer);
 
   // Content container
-  const contentContainer = document.createElement("div");
-  contentContainer.className = "card-body p-5";
+  const contentContainer = document.createElement('div');
+  contentContainer.className = 'card-body p-5';
   listing.appendChild(contentContainer);
 
   // Title
-  const title = document.createElement("h2");
-  title.className = "card-title heading display-4";
-  title.textContent = data.title || "An Antique Item";
+  const title = document.createElement('h2');
+  title.className = 'card-title heading display-4';
+  title.textContent = data.title || 'An Antique Item';
   contentContainer.appendChild(title);
 
   // Seller
-  const seller = document.createElement("h3");
-  seller.className = "card-subtitle text-muted";
-  seller.textContent = `By: ${data.seller?.name || "Emilia."}`;
+  const seller = document.createElement('h3');
+  seller.className = 'card-subtitle text-muted';
+  seller.textContent = `By: ${data.seller?.name || 'Emilia.'}`;
   contentContainer.appendChild(seller);
 
   // Description
-  const description = document.createElement("div");
-  description.className = "card-text fs-4";
-  description.textContent = data.description || "An antique item description, providing details of the materials, care and era.";
+  const description = document.createElement('div');
+  description.className = 'card-text fs-4';
+  description.textContent =
+    data.description ||
+    'An antique item description, providing details of the materials, care and era.';
   contentContainer.appendChild(description);
 
   // Bids and deadline container
-  const containerBidDeadline = document.createElement("div");
-  containerBidDeadline.className = "card-body d-flex flex-row justify-content-between";
+  const containerBidDeadline = document.createElement('div');
+  containerBidDeadline.className =
+    'card-body d-flex flex-row justify-content-between';
   listing.appendChild(containerBidDeadline);
 
   // Bids
-  const bidCount = document.createElement("p");
-  bidCount.className = "card-text caption";
-  bidCount.innerHTML = `<strong>Bids:</strong> <span class="fw-bold">${data._count.bids || "0"}</span>`;
+  const bidCount = document.createElement('p');
+  bidCount.className = 'card-text caption';
+  bidCount.innerHTML = `<strong>Bids:</strong> <span class="fw-bold">${data._count.bids || '0'}</span>`;
   containerBidDeadline.appendChild(bidCount);
 
   // Deadline
-  const deadLine = document.createElement("p");
-  deadLine.className = "card-text caption text-danger";
+  const deadLine = document.createElement('p');
+  deadLine.className = 'card-text caption text-danger';
   deadLine.textContent = `Ends at: ${formatDate(data.endsAt)}`;
   containerBidDeadline.appendChild(deadLine);
 
   // Bid Now Button
-  const bidNowButton = document.createElement("button");
-  bidNowButton.className = "btn btn-custom-primary btn-lg";
-  bidNowButton.textContent = "Place a Bid";
+  const bidNowButton = document.createElement('button');
+  bidNowButton.className = 'btn btn-custom-primary btn-lg';
+  bidNowButton.textContent = 'Place a Bid';
   containerBidDeadline.appendChild(bidNowButton);
 
   return listing;
@@ -213,7 +211,6 @@ export async function renderSingleListing(postId, postsContainer) {
     postsContainer.innerHTML = `<p>Failed to load post. Please reload the page or try again later.</p>`;
   }
 }
-
 
 export async function initializePostsPage(postsContainer) {
   try {

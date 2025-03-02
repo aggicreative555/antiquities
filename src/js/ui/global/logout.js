@@ -1,4 +1,4 @@
-import { onLogout } from "../auth/logout";
+import { onLogout } from '../auth/logout';
 /**
  * Attaches a click event listener to the logout button to handle user logout.
  *
@@ -8,16 +8,16 @@ import { onLogout } from "../auth/logout";
  */
 
 export function setLogoutListener() {
-    try {
-      const logoutButton = document.querySelector('#logoutButton');
-  
-      if (logoutButton) {
-        logoutButton.addEventListener('click', onLogout);
-      } else {
-        throw new Error('Logout button not found');
-      }
-    } catch (error) {
-      console.error('Logout listener not working.');
-      throw error;
+  try {
+    const logoutButton = document.querySelector('#logoutButton');
+
+    if (logoutButton) {
+      logoutButton.addEventListener('click', onLogout);
+    } else {
+      throw new Error('Logout button not found');
     }
+  } catch (error) {
+    console.error('Logout listener not working.');
+    throw error;
   }
+}

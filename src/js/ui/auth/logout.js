@@ -6,7 +6,7 @@ import { remove } from '../../utilities/authGuard';
  * @function onLogout
  * @throws {Error} If accessToken or user is missing or cannot be removed.
  *
-*/
+ */
 export function onLogout() {
   try {
     remove('accessToken');

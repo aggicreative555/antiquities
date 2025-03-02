@@ -1,14 +1,14 @@
 export function footerTemplate() {
-    try {
-      const footer = document.getElementById("footer");
-  
-      const existingFooter = document.querySelector(".footer");
-      if (existingFooter) existingFooter.remove();
-  
-      const footerElement = document.createElement("footer");
-      footerElement.className = "footer py-4 mt-5"; 
-  
-      footerElement.innerHTML = `
+  try {
+    const footer = document.getElementById('footer');
+
+    const existingFooter = document.querySelector('.footer');
+    if (existingFooter) existingFooter.remove();
+
+    const footerElement = document.createElement('footer');
+    footerElement.className = 'footer py-4 mt-5';
+
+    footerElement.innerHTML = `
         <div class="container d-flex flex-column align-items-center mb-5 pb-5">
           <!-- Logo -->
           <a href="/" class="mb-5">
@@ -44,10 +44,9 @@ export function footerTemplate() {
           </ul>
         </div>
       `;
-  
-      footer.appendChild(footerElement);
-    } catch (error) {
-      console.error("Error rendering footer:", error);
-    }
- }
-  
+
+    footer.appendChild(footerElement);
+  } catch (error) {
+    console.error('Error rendering footer:', error);
+  }
+}

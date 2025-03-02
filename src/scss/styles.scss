@@ -10,11 +10,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400..700;1,400..700&family=Manrope:wght@200..800&display=swap');
 
 @font-face {
-  font-family: "Academy Engraved LET";
-  src: local("/public/fonts/Academy\ Engraved\ LET\ Plain.ttf") format("ttf"),
+  font-family: 'Academy Engraved LET';
+  src: local('/public/fonts/Academy\ Engraved\ LET\ Plain.ttf') format('ttf');
 }
 
-// Utility 
+// Utility
 
 .text-bold-S {
   font-weight: 600;
@@ -23,7 +23,7 @@
 }
 
 .box-shadow-S {
-  box-shadow: 0px 4px 16px 0px rgba(29, 26, 25, 0.20);
+  box-shadow: 0px 4px 16px 0px rgba(29, 26, 25, 0.2);
 }
 
 .heading {
@@ -46,7 +46,6 @@
   color: $brown-700;
 }
 
-
 .line {
   display: block;
   height: 2px;
@@ -57,7 +56,7 @@
 .arrow-icon {
   max-height: 56px;
   width: auto;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .display {
@@ -79,7 +78,7 @@ body {
 }
 
 main {
-  margin-top:15%;
+  margin-top: 15%;
 }
 
 .incorrect {
@@ -101,7 +100,6 @@ main {
 .bg-light {
   background-color: $brown-100 !important;
   color: $black-100;
-
 }
 
 .bg-brown-300 {
@@ -111,9 +109,9 @@ main {
 
 .bg-dark-theme {
   background-color: $burgundy-dark-theme !important;
-  
+
   .nav-link {
-    color: $brown-100 !important; 
+    color: $brown-100 !important;
   }
 }
 
@@ -122,7 +120,7 @@ main {
 
   &:hover {
     padding-right: 1rem;
-    margin-left: .5rem;
+    margin-left: 0.5rem;
   }
 }
 
@@ -132,35 +130,33 @@ main {
   overflow: hidden;
   border-radius: 50%;
   width: 5rem;
-  height:6rem;
+  height: 6rem;
 }
 
 .profile-content {
   text-decoration: none;
   color: $black-100;
-
 }
 
 .frame {
-  border: 1px solid $black-100;   
-  outline: 4px solid $black;    
-  outline-offset: 4px;       
-  padding: 1rem;  
+  border: 1px solid $black-100;
+  outline: 4px solid $black;
+  outline-offset: 4px;
+  padding: 1rem;
   width: fit-content;
-  max-width: 556px;       
+  max-width: 556px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .img-responsive {
-
   border-radius: 0%;
   filter: brightness(70%);
   transition: all 0.3s ease-in-out;
 
   &:hover {
-      filter: brightness(100%);
+    filter: brightness(100%);
   }
 }
 
@@ -170,12 +166,11 @@ main {
   outline: 1px solid $brown-100;
   outline-offset: 1px;
   max-width: 456px;
-  padding: .5rem;
+  padding: 0.5rem;
   transition: all 0.3s ease-in-out;
 
   .card-body {
     max-height: 248px;
-
   }
 
   .card-footer {
@@ -205,7 +200,6 @@ main {
   }
 
   &:hover {
-
     outline: 1px solid $brown-400;
     outline-offset: 4px;
     border-radius: 0%;
@@ -229,13 +223,10 @@ main {
   }
 }
 
-
-
-
 @media (main-width: 991px) {
   #navBarNav {
-    max-height: 50vh; 
-    overflow-y: auto; 
+    max-height: 50vh;
+    overflow-y: auto;
     background: white;
   }
 
@@ -250,8 +241,8 @@ main {
   color: $brown-100 !important;
   border: 1px solid $black-100 !important;
   border-radius: 0%;
-  outline: 1px solid $black-100 !important;    
-  outline-offset: 2px;   
+  outline: 1px solid $black-100 !important;
+  outline-offset: 2px;
   font-weight: 500;
   min-width: 256px;
   text-transform: capitalize;
@@ -282,8 +273,8 @@ main {
   color: $black-100 !important;
   border: 1px solid $black-100 !important;
   border-radius: 0%;
-  outline: 1px solid $black-100 !important;    
-  outline-offset: 2px;   
+  outline: 1px solid $black-100 !important;
+  outline-offset: 2px;
   font-weight: 500;
   min-width: 256px;
   text-transform: capitalize;
@@ -362,6 +353,10 @@ main {
 
 /* Pulse Animation */
 @keyframes pulse {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }

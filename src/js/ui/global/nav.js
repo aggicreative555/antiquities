@@ -1,5 +1,5 @@
-import { load } from "../../utilities/authGuard";
-import { setLogoutListener } from "./logout";
+import { load } from '../../utilities/authGuard';
+import { setLogoutListener } from './logout';
 
 export function navTemplate() {
   try {
@@ -7,11 +7,11 @@ export function navTemplate() {
 
     const header = document.getElementById('header');
 
-    const existingNav = document.querySelector(".navbar");
+    const existingNav = document.querySelector('.navbar');
     if (existingNav) existingNav.remove();
 
     const nav = document.createElement('nav');
-    nav.className = "navbar navbar-light bg-light fixed-top box-shadow-S";
+    nav.className = 'navbar navbar-light bg-light fixed-top box-shadow-S';
 
     nav.innerHTML = `
     <div class="container position-relative">
@@ -42,18 +42,18 @@ export function navTemplate() {
         </ul>
 
          ${
-            user
-              ? // LOGGED-IN STATE
-                `<div id="isloggedIn" class="d-flex flex-column align-items-center text-center">
+           user
+             ? // LOGGED-IN STATE
+               `<div id="isloggedIn" class="d-flex flex-column align-items-center text-center">
                   <div class="frame">
                     <div class="profile-picture-container d-flex justify-content-center align-items-center border border-5 border-black m-4">
-                      <img style="height: 120px; width:auto;" src="${user.profileImage || "/images/placeholder-image-camera.jpg"}" alt="Profile image">
+                      <img style="height: 120px; width:auto;" src="${user.profileImage || '/images/placeholder-image-camera.jpg'}" alt="Profile image">
                     </div>
                     <a href="/profile/index.html" class="profile-content d-flex flex-column align-items-center">
                       <p class="caption">Account</p>
-                      <p id="name" class="heading">${user.name || "User"}</p>
+                      <p id="name" class="heading">${user.name || 'User'}</p>
                       <span class="line"></span>
-                      <p class="caption p-2 fw-bold" id="credit">${user.credit || "0"} NOK</p>
+                      <p class="caption p-2 fw-bold" id="credit">${user.credit || '0'} NOK</p>
                     </a>
                   </div>
                   <div class="d-flex flex-column gap-4 my-4">
@@ -61,12 +61,12 @@ export function navTemplate() {
                     <button class="btn btn-custom-secondary" id="logoutButton">Log Out</button>
                   </div>
                 </div>`
-              : // LOGGED-OUT STATE
-                `<div id="isNotLoggedIn" class="d-flex flex-column gap-3 py-5">
+             : // LOGGED-OUT STATE
+               `<div id="isNotLoggedIn" class="d-flex flex-column gap-3 py-5">
                   <a href="/auth/login/" class="btn btn-custom-primary">Log In</a>
                   <a href="/auth/register/" class="btn btn-custom-secondary">Register</a>
                 </div>`
-          }
+         }
         </div>
       </div>
     `;
@@ -75,15 +75,12 @@ export function navTemplate() {
     header.appendChild(nav);
 
     const logoutButton = document.getElementById('logoutButton');
-  
+
     if (logoutButton) {
       console.log(logoutButton);
       setLogoutListener();
-  
     }
   } catch (error) {
-    console.error('Error rendering nav:',error);
+    console.error('Error rendering nav:', error);
   }
-
 }
-
