@@ -1,6 +1,5 @@
 import { readMultipleListings } from "../../api/listings/read";
 import { renderMultipleListings } from "../../ui/post/listingTemplate";
-import { preloaderHome } from "../../ui/global/preloaders/preloaderHome";
 
 export async function initializeHome() {
    try {
