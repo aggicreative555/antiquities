@@ -106,6 +106,7 @@ This project can be deployed on platforms like Netlify. When deploying to Netlif
 ## Dependencies:
 
 - **Bootstrap**:  A popular CSS framework for building responsive web pages.
+- **Bootstrap Icons**:  Boostrap Icons.
 - **dotenv**: A module to load environment variables from .env files.
 - **@popperjs/core**: A library used by Bootstrap for positioning tooltips and popovers.
 
